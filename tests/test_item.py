@@ -4,7 +4,7 @@ from src.item import Item
 import csv
 @pytest.fixture
 def item1():
-    return Item('Смартфон',10000, 20)
+    return Item('Смартфон', 10000, 20)
 
 def test_item_init(item1):
     assert item1.name == "Смартфон"
@@ -31,3 +31,10 @@ def test_instantiate_from_csv():
         data = csv.DictReader(file)
         for line in data:
             assert line is not None
+
+def test__str__(item1):
+    assert str(item1) == 'Смартфон'
+
+
+def test__repr__(item1):
+    assert repr(item1) == "Item('Смартфон', 10000, 20)"

@@ -60,3 +60,8 @@ class Item:
     def string_to_number(number):
         return int(number.split('.')[0])
 
+    def __str__(self):
+        return self.name
+
+    def __repr__(self):
+        return f"Item('{self.name}', {self.price}, {self.quantity})"
