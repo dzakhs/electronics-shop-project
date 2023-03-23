@@ -18,10 +18,16 @@ def test_apply_discount(item1):
     assert item1.price*item1.pay_rate == int(10000)
 
 
-
 def test_string_to_number():
     assert Item.string_to_number('43.9') == 43
 
 def test_name():
     Item.name = "Новыйсмартфон"
     assert Item.name == "Новыйсмартфон"
+
+
+def test_instantiate_from_csv():
+    with open('../src/items.csv','r',encoding='windows-1251') as file:
+        data = csv.DictReader(file)
+        for line in data:
+            assert line is not None
