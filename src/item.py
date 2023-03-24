@@ -50,11 +50,12 @@ class Item:
         return self.price
 
     @classmethod
-    def instantiate_from_csv(cls):
-        with open('../src/items.csv','r',encoding='windows-1251') as file:
+    def instantiate_from_csv(cls, CSV_FILE='../src/items.csv'):
+        with open(CSV_FILE,'r',encoding='windows-1251') as file:
             data = csv.DictReader(file)
             for line in data:
-                cls.all.append(line)
+                name, price, quantity = line.get('name'), int(line.get('price')), int(line.get('quantity'))
+                cls.all.append((name, price, quantity))
 
     @staticmethod
     def string_to_number(number):

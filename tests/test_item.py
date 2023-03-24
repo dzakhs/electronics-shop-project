@@ -27,10 +27,8 @@ def test_name():
 
 
 def test_instantiate_from_csv():
-    with open('../src/items.csv','r',encoding='windows-1251') as file:
-        data = csv.DictReader(file)
-        for line in data:
-            assert line is not None
+    Item.instantiate_from_csv(CSV_FILE='../src/items.csv')
+    assert type(Item.all) is not None
 
 def test__str__(item1):
     assert str(item1) == 'Смартфон'
